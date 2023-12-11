@@ -3,9 +3,10 @@ import Image from "next/image";
 import MovieCard from "./MovieCard";
 import { authOptions } from "../utils/auth";
 import { getServerSession } from "next-auth";
+import prisma from "../utils/db";
 
 async function getMovie(userId: string) {
-  const data = await prisma?.movie.findMany({
+  const data = await prisma.movie.findMany({
     take: 4,
     select: {
       id: true,
